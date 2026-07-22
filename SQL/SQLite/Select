@@ -1,0 +1,14 @@
+import sqlite3
+
+conn = sqlite3.connect("WSDA_Music.db")
+cursor = conn.cursor()
+query = ("""SELECT FirstName as FN, LastName as LN, Email 
+            FROM Customer
+         ORDER BY FirstName ASC, LastName ASC
+         Limit 10"""
+         )
+cursor.execute(query)
+result = cursor.fetchall()
+for row in result:
+    print(row)
+conn.close()
